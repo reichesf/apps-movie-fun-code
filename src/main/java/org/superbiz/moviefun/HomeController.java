@@ -48,6 +48,7 @@ public class HomeController {
 
         TransactionDefinition td = new DefaultTransactionDefinition();
         TransactionStatus moviesTransactionStatus = this.moviesPlatformTransactionManager.getTransaction(td);
+        moviesBean.clean();
         for (Movie movie : movieFixtures.load()) {
             moviesBean.addMovie(movie);
         }
@@ -56,6 +57,7 @@ public class HomeController {
 
         TransactionDefinition albumTd = new DefaultTransactionDefinition();
         TransactionStatus albumTransactionStatus = this.albumsPlatformTransactionManager.getTransaction(albumTd);
+        albumsBean.clean();
         for (Album album : albumFixtures.load()) {
             albumsBean.addAlbum(album);
         }
